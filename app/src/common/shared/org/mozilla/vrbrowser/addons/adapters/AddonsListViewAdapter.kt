@@ -98,7 +98,7 @@ class AddonsManagerAdapter(
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.addons_item, parent, false)
-        val iconContainer = view.findViewById<CardView>(R.id.icon_container)
+//        val iconContainer = view.findViewById<CardView>(R.id.icon_container)
         val iconView = view.findViewById<ImageView>(R.id.add_on_icon)
         val titleView = view.findViewById<TextView>(R.id.add_on_name)
         val summaryView = view.findViewById<TextView>(R.id.add_on_description)
@@ -109,7 +109,7 @@ class AddonsManagerAdapter(
         val allowedInPrivateBrowsingLabel = view.findViewById<ImageView>(R.id.allowed_in_private_browsing_label)
         return AddonViewHolder(
             view,
-            iconContainer,
+//            iconContainer,
             iconView,
             titleView,
             summaryView,
@@ -149,7 +149,7 @@ class AddonsManagerAdapter(
     internal fun bindAddon(holder: AddonViewHolder, addon: Addon) {
         val context = holder.itemView.context
         addon.rating?.let {
-            val userCount = context.getString(R.string.mozac_feature_addons_user_rating_count)
+//            val userCount = context.getString(R.string.mozac_feature_addons_user_rating_count)
             val ratingContentDescription =
                 String.format(
                     context.getString(R.string.mozac_feature_addons_rating_content_description),
@@ -160,7 +160,7 @@ class AddonsManagerAdapter(
             // for contentDescription for the TalkBack feature
             holder.ratingAccessibleView.text = ratingContentDescription
             holder.ratingView.rating = it.average
-            holder.userCountView.text = String.format(userCount, getFormattedAmount(it.reviews))
+//            holder.userCountView.text = String.format(userCount, getFormattedAmount(it.reviews))
         }
 
         holder.titleView.text =
@@ -191,10 +191,10 @@ class AddonsManagerAdapter(
         holder.allowedInPrivateBrowsingLabel.visibility = if (addon.isAllowedInPrivateBrowsing()) View.VISIBLE else View.GONE
         style?.maybeSetPrivateBrowsingLabelDrawale(holder.allowedInPrivateBrowsingLabel)
 
-        style?.addonBackgroundIconColor?.let {
-            val backgroundColor = ContextCompat.getColor(holder.iconContainer.context, it)
-            holder.iconContainer.setCardBackgroundColor(backgroundColor)
-        }
+//        style?.addonBackgroundIconColor?.let {
+//            val backgroundColor = ContextCompat.getColor(holder.iconContainer.context, it)
+//            holder.iconContainer.setCardBackgroundColor(backgroundColor)
+//        }
         fetchIcon(addon, holder.iconView)
         style?.maybeSetAddonNameTextColor(holder.titleView)
         style?.maybeSetAddonSummaryTextColor(holder.summaryView)

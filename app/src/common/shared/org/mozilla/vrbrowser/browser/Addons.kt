@@ -50,10 +50,11 @@ class Addons(val context: Context, private val sessionStore: SessionStore) {
     val listeners: ArrayList<AddonsListener> = ArrayList()
 
     val addonCollectionProvider by lazy {
-        if (BuildConfig.AMO_COLLECTION.isNotEmpty()) {
+        if (BuildConfig.AMO_COLLECTION.isNotEmpty() && BuildConfig.AMO_USER.isNotEmpty()) {
             AddonCollectionProvider(
                     context,
                     EngineProvider.getDefaultClient(context),
+                    collectionUser = BuildConfig.AMO_USER,
                     collectionName = BuildConfig.AMO_COLLECTION,
                     maxCacheAgeInMinutes = DAY_IN_MINUTES
             )

@@ -52,11 +52,11 @@ class Services(val context: Context, places: Places): GeckoSession.NavigationDel
     // This makes bookmarks storage accessible to background sync workers.
     init {
         Megazord.init()
-        try {
-            RustLog.enable()
-        } catch (e: LogAdapterCannotEnable) {
-            android.util.Log.w(LOGTAG, "RustLog has been enabled.")
-        }
+//        try {
+//            RustLog.enable()
+//        } catch (e: LogAdapterCannotEnable) {
+//            android.util.Log.w(LOGTAG, "RustLog has been enabled.")
+//        }
         RustHttpConfig.setClient(lazy { EngineProvider.createClient(context) })
 
         // Make sure we get logs out of our android-components.

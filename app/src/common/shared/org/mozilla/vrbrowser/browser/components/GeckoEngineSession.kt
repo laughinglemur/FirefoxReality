@@ -35,14 +35,14 @@ class GeckoEngineSession(
     override fun goForward() = Unit
     override fun goToHistoryIndex(index: Int) = Unit
     override fun loadData(data: String, mimeType: String, encoding: String) = Unit
-    override fun recoverFromCrash(): Boolean = true
+//    override fun recoverFromCrash(): Boolean = true
     override fun reload(flags: LoadUrlFlags) = Unit
     override fun restoreState(state: EngineSessionState) = true
-    override fun saveState(): EngineSessionState = DummyEngineSessionState()
+//    override fun saveState(): EngineSessionState = DummyEngineSessionState()
     override fun stopLoading() = Unit
     override fun toggleDesktopMode(enable: Boolean, reload: Boolean) = Unit
 }
 
-private class DummyEngineSessionState : EngineSessionState {
-    override fun toJSON(): JSONObject = JSONObject()
-}
+//private class DummyEngineSessionState : EngineSessionState {
+//    override fun toJSON(): JSONObject = JSONObject()
+//}

@@ -35,7 +35,7 @@ class GeckoViewFetchClient(
         if (executor == null) {
             throw IOException("GeckoWebExecutor not initialized")
         }
-        val webRequest = request.toWebRequest(defaultHeaders)
+        val webRequest = request.toWebRequest()
 
         val readTimeOut = request.readTimeout ?: maxReadTimeOut
         val readTimeOutMillis = readTimeOut.let { (timeout, unit) ->
@@ -64,20 +64,14 @@ class GeckoViewFetchClient(
     }
 }
 
-private fun Request.toWebRequest(defaultHeaders: Headers): WebRequest = WebRequest.Builder(url)
+private fun Request.toWebRequest(): WebRequest = WebRequest.Builder(url)
     .method(method.name)
-    .addHeadersFrom(this, defaultHeaders)
+    .addHeadersFrom(this)
     .addBodyFrom(this)
     .cacheMode(if (useCaches) CACHE_MODE_DEFAULT else CACHE_MODE_RELOAD)
     .build()
 
-private fun WebRequest.Builder.addHeadersFrom(request: Request, defaultHeaders: Headers): WebRequest.Builder {
-    defaultHeaders.filter { header ->
-        request.headers?.contains(header.name) != true
-    }.forEach { header ->
-        addHeader(header.name, header.value)
-    }
-
+private fun WebRequest.Builder.addHeadersFrom(request: Request): WebRequest.Builder {
     request.headers?.forEach { header ->
         addHeader(header.name, header.value)
     }

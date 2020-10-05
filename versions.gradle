@@ -28,6 +28,7 @@ versions.gecko_view_nightly = "81.0.20200804091327"
 versions.gecko_view_beta = "79.0.20200630191632"
 versions.gecko_view_release = "78.0.20200630195452"
 versions.android_components = "51.0.0"
+versions.next_android_components = "61.0.0"
 // Note that android-components also depends on application-services,
 // and in fact is our main source of appservices-related functionality.
 // The version number below tracks the application-services version
@@ -90,7 +91,7 @@ android_components.support_ktx = "org.mozilla.components:support-ktx:$versions.a
 android_components.feature_accounts = "org.mozilla.components:feature-accounts:$versions.android_components"
 android_components.feature_webcompat = "org.mozilla.components:feature-webcompat:$versions.android_components"
 android_components.feature_webcompat_reporter = "org.mozilla.components:feature-webcompat-reporter:$versions.android_components"
-android_components.feature_addons = "org.mozilla.components:feature-addons:$versions.android_components"
+android_components.feature_addons = "org.mozilla.components:feature-addons:$versions.next_android_components"
 android_components.support_test = "org.mozilla.components:support-test:$versions.android_components"
 android_components.support_test_appservices = "org.mozilla.components:support-test-appservices:$versions.android_components"
 deps.android_components = android_components
